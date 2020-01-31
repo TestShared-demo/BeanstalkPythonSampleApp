@@ -90,14 +90,20 @@
   </div>
   
   <div class="linksColumn"> 
-    <h2>List of tables in RDS database - arn:aws:rds:us-east-1:613155462613:db:database-1</h2>
-
-    <ul>
-    {% for table in rds_table_list %}
-      <li>{{ table }}</li>
-      {% endfor %}
-    </ul>
-
+    <h2>List of tables in RDS database</h2>
+    <h2>arn:aws:rds:us-east-1:613155462613:db:database-1</h2>
+    <h3>
+    <table>
+      <tbody>
+        {% for table in rds_table_list %}
+        <tr>
+          <td>
+           <h4><span>{{ table }}</span></h4>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
 </body>
 </html>

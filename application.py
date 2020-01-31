@@ -16,10 +16,7 @@ def index():
     try:
         print ("Index function called: {}".format(datetime.now()), flush=True)
         connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
-        engine = db.create_engine(connection_str)
-        print ("Getting bd schema: {}".format(datetime.now()), flush=True)
-        insp = db.inspect(engine)
-        db_list = insp.get_schema_names()
+        engine = db.create_engine(connection_str, connect_args={'connect_timeout': 4})
         print ("Fetching list of tables from the databases: {}".format(datetime.now()), flush=True)
         rds_table_list = []
         result = engine.execute("show tables;")
@@ -31,6 +28,7 @@ def index():
         print("RDS connection failed: {} - {}".format(datetime.now(), e), flush=True)
         rds_table_list = ["*** Database not accessible. ***"]
     print ("Rendering HTMl : {}".format(datetime.now()), flush=True)
+    print (rds_table_list, flush=True)
     return render_template("index.html", rds_table_list=rds_table_list)
 
 if __name__ == "__main__":
