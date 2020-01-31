@@ -1,12 +1,30 @@
 from flask import Flask, render_template
 import os
+import random
+import boto3
+import sqlalchemy as db
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
 
-    return render_template("index.html")
+    try:
+        connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
+        engine = db.create_engine(connection_str, connect_args={'connect_timeout': 2})
+        rds_table_list = []
+        result = engine.execute("show tables;")
+
+        for tables in result:
+            table_name = str(tables).replace(",","").replace("(","").replace(")","").replace("\'","")
+            rds_table_list.append(table_name)
+    except Exception as e:
+        print("RDS connection failed: {}".format(e), flush=True)
+        rds_table_list = ["*** Database not accessible. ***"]
+
+    print (rds_table_list, flush=True)
+
+    return render_template("index.html", rds_table_list=rds_table_list)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 80)))

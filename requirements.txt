@@ -1,1 +1,4 @@
 Flask==1.0
+Boto3
+sqlalchemy
+pymysql
