@@ -6,9 +6,12 @@ import sqlalchemy as db
 
 app = Flask(__name__)
 
+@app.route("/ping")
+def ping():
+    return "Hello World"
+
 @app.route("/")
 def index():
-
     try:
         connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
         engine = db.create_engine(connection_str, connect_args={'connect_timeout': 2})
