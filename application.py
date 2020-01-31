@@ -13,7 +13,7 @@ def ping():
 
 @app.route("/")
 def index():
-    try:
+#    try:
 #        print ("Index function called: {}".format(datetime.now()), flush=True)
 #        connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
 #        engine = db.create_engine(connection_str)
