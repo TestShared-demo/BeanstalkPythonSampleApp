@@ -16,7 +16,7 @@ def index():
     try:
         print ("Index function called: {}".format(datetime.now()), flush=True)
         connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
-        engine = db.create_engine(connection_str, connect_args={'connect_timeout': 2})
+        engine = db.create_engine(connection_str)
         print ("Getting bd schema: {}".format(datetime.now()), flush=True)
         insp = db.inspect(engine)
         db_list = insp.get_schema_names()
