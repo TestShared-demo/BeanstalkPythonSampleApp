@@ -17,7 +17,7 @@ def index():
         print ("Index function called: {}".format(datetime.now()), flush=True)
         connection_str = f'mysql+pymysql://admin123:admin123@database-1.cwccoglqaq27.us-east-1.rds.amazonaws.com:3306/Bullet'
         engine = db.create_engine(connection_str, connect_args={'connect_timeout': 4})
-        print ("Fetching list of tables from the databases: {}".format(datetime.now()), flush=True)
+        print ("Fetching list of tables from the databases : {}".format(datetime.now()), flush=True)
         rds_table_list = []
         result = engine.execute("show tables;")
         print ("Retrieved list of tables from the databases: {}".format(datetime.now()), flush=True)
