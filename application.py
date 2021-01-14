@@ -20,7 +20,7 @@ def index():
         print ("Fetching list of tables from the databases : {}".format(datetime.now()), flush=True)
         rds_table_list = []
         result = engine.execute("show tables;")
-        print ("Retrieved list of tables from the databases: {}".format(datetime.now()), flush=True)
+        print ("Retrieved list of tables  from the databases: {}".format(datetime.now()), flush=True)
         for tables in result:
             table_name = str(tables).replace(",","").replace("(","").replace(")","").replace("\'","")
             rds_table_list.append(table_name)
