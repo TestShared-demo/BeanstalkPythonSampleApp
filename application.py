@@ -25,7 +25,7 @@ def index():
             table_name = str(tables).replace(",","").replace("(","").replace(")","").replace("\'","")
             rds_table_list.append(table_name)
     except Exception as e:
-        print("RDS connection failed: {} - {}".format(datetime.now(), e), flush=True)
+        print("RDS connection failed: {} - {} ".format(datetime.now(), e), flush=True)
         rds_table_list = ["*** Database not accessible. ***"]
     print ("Rendering HTMl : {}".format(datetime.now()), flush=True)
     print (rds_table_list, flush=True)
